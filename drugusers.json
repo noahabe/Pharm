@@ -56,4 +56,41 @@
   "longitude": 38.876944,
   "latitude": 9.03483,
   "dosage": "And it will"
+}{
+  "317079275": {
+    "drug_name": "Drug",
+    "dosage": "New",
+    "longitude": -11.406255,
+    "Latitude": null,
+    "latitude": 20.659324
+  }
+}{
+  "317079275": {
+    "drug_name": "Goody",
+    "dosage": "2shoea",
+    "longitude": null,
+    "Latitude": null
+  }
+}{
+  "317079275": {
+    "drug_name": "Goody",
+    "dosage": "2shoea",
+    "longitude": -11.406255,
+    "Latitude": null,
+    "latitude": 20.659324
+  }
+}{
+  "317079275": {
+    "drug_name": "This could be something",
+    "dosage": "One day hopefully",
+    "longitude": null,
+    "latitude": null
+  }
+}{
+  "317079275": {
+    "drug_name": "This could be something",
+    "dosage": "One day hopefully",
+    "longitude": -11.406255,
+    "latitude": 20.659324
+  }
 }
