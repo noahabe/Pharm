@@ -14,47 +14,26 @@ ENTRY, ENTRY1, LOCATION, BYE= range(4)
 
 class userdata(object):
     def __init__(self):
-        self.dict = {
-            'chatId' : {
-                'drug_name' : None,
-                'Dosage' : None,
-                'longitude' : None,
-                'latitude' : None
-                }
+        self.dict = {}
+        self.dict1 = {
+            'drug_name' : None,
+            'dosage' : None,
+            'longitude' : None,
+            'latitude' : None
         }
-
-
-    def setUser(self, user):
-        self.dict['chatId'] = user
-        return 0
-
-    def set_drugName(self, major):
-        self.dict['drug_name'] = major
-        return 0
-    def setdosage(self, dosage):
-        self.dict['Dosage'] = dosage
-        return 0
-    def set_longitude(self, year):
-        self.dict['longitude'] = year
-        return 0
-
-    def set_latitude(self, fileId):
-        self.dict['latitude'] = fileId
-        return 0
-
 userdata = userdata()
 
 def start(update, context):
+    chatId = update.message.chat.id
     update.message.reply_text('please enter the name of the drug')
-    userdata.setUser(update.message.chat.id)
+    userdata.dict[chatId] = userdata.dict1
 
     return ENTRY
 
 def entry(update, context):
     user = update.message.from_user
     chatId = update.message.chat.id
-
-    userdata.dict(chatId).drug_name = update.message.text
+    userdata.dict[chatId]['drug_name'] = update.message.text
 
     logger.info('%s entered %s for drugs ', user.first_name, update.message.text)
     update.message.reply_text('Now Enter the dosage:---')
@@ -65,7 +44,9 @@ def entry(update, context):
 def entry1(update, context):
     user = update.message.from_user
     chatId = update.message.chat.id
-    userdata.dict(chatId).Dosage = update.message.text
+    userdata.dict[chatId]['dosage'] = update.message.text
+    with open('drugusers.json', 'a') as f:
+        json.dump(userdata.dict, f, indent =2)
     logger.info('%s entered %s for dosage ', user.first_name, update.message.text)
     update.message.reply_text('please send your location')
     return LOCATION
@@ -82,15 +63,15 @@ def location(update, context):
         user_location = update.message.location
         logger.info("Location of %s: %f / %f", user.first_name, user_location.latitude,
                     user_location.longitude)
-        userdata.set_latitude(user_location.latitude)
-        userdata.set_longitude(user_location.longitude)
+        userdata.dict[chatId]['latitude'] = user_location.latitude
+        userdata.dict[chatId]['longitude'] = user_location.longitude
         update.message.reply_text('Thank you for using our bot '
                                   'we will get back to you as soon as we can', reply_markup = ReplyKeyboardRemove())
         with open('drugusers.json', 'a') as f:
             json.dump(userdata.dict, f, indent =2)
 
-        bot.send_message(chat_id = '@trial13', text = 'user : ' +user.first_name +'\nDrug Requested : ' + userdata.dict(chatId).drug_name +'\n Dosage : '
-                    + userdata.dict(chatId).dosage,
+        bot.send_message(chat_id = '@trial13', text = 'user : ' +user.first_name +'\nDrug Requested : ' + userdata.dict[chatId]['drug_name'] +'\nDosage : '
+                    + userdata.dict[chatId]['dosage'],
                 reply_markup = reply_markup)
 
 
