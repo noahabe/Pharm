@@ -11,6 +11,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 ENTRY, ENTRY1, LOCATION, BYE= range(4)
+#callback data
+ONE = range(1)
 
 class userdata(object):
     def __init__(self):
@@ -21,13 +23,14 @@ class userdata(object):
             'longitude' : None,
             'latitude' : None
         }
+        self.dict2 = {'chatId' : None}
 userdata = userdata()
 
 def start(update, context):
     chatId = update.message.chat.id
     update.message.reply_text('please enter the name of the drug')
     userdata.dict[chatId] = userdata.dict1
-
+    userdata.dict2['chatId'] = update.message.chat.id
     return ENTRY
 
 def entry(update, context):
@@ -55,8 +58,7 @@ def location(update, context):
         bot = context.bot
         chatId = update.message.chat.id
         keyboard = [
-            [InlineKeyboardButton("Available", callback_data= '1'),
-             InlineKeyboardButton("Unavailable", callback_data= '2')]
+            [InlineKeyboardButton("Available", callback_data= str(ONE))]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         user = update.message.from_user
@@ -75,7 +77,15 @@ def location(update, context):
                 reply_markup = reply_markup)
 
 
-        return ConversationHandler.END
+        return ONE
+
+def available(update, context):
+
+    bot = context.bot
+    bot.send_message(chat_id = userdata.dict2.chatId,
+    text = 'your requested drug has been located at:__')
+    return ConversationHandler.END
+
 
 def cancel(update, context):
     user = update.message.from_user
@@ -97,7 +107,8 @@ def main():
             states = {
                 ENTRY : [MessageHandler(Filters.all, entry)],
                 ENTRY1 : [MessageHandler(Filters.all, entry1)],
-                LOCATION : [MessageHandler(Filters.location, location)]
+                LOCATION : [MessageHandler(Filters.location, location)],
+                ONE : [CallbackQueryHandler(available, pattern='^' + str(ONE) + '$')]
             },
 
             fallbacks = [CommandHandler('cancel',cancel)]
