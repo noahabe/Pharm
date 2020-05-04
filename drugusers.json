@@ -1,96 +1,21 @@
-{"user_id": "TallYoda", "drug_name": "Fg", "longitude": -11.406255, "latitude": 20.659324}{"user_id": "TallYoda", "drug_name": "Dnf", "longitude": -11.406255, "latitude": 20.659324}{
-  "user_id": "TallYoda",
-  "drug_name": "Tjfjt",
-  "longitude": -11.406255,
-  "latitude": 20.659324
-}{
-  "user_id": "TallYoda",
-  "drug_name": "Rjfnf",
-  "longitude": -11.406255,
-  "latitude": 20.659324
-}{
-  "user_id": "TallYoda",
-  "drug_name": "Dhdjd",
-  "longitude": -11.406255,
-  "latitude": 20.659324
-}{
-  "user_id": "TallYoda",
-  "drug_name": "Ejen",
-  "longitude": -11.406255,
-  "latitude": 20.659324
-}{
-  "user_id": "TallYoda",
-  "drug_name": "Ndnd",
-  "longitude": -11.406255,
-  "latitude": 20.659324
-}{
-  "user_id": 317079275,
-  "drug_name": "Rjfj",
-  "longitude": -11.406255,
-  "latitude": 20.659324
-}{
-  "user_id": 317079275,
-  "drug_name": "Goo goo gadjet",
-  "Dosage": null,
-  "longitude": 38.876944,
-  "latitude": 9.03483,
-  "dosage": "Ligma"
-}{
-  "user_id": 317079275,
-  "drug_name": "Doloi",
-  "Dosage": null,
-  "longitude": 38.876944,
-  "latitude": 9.03483,
-  "dosage": "It"
-}{
-  "user_id": 317079275,
-  "drug_name": "Go jote",
-  "Dosage": null,
-  "longitude": 38.876944,
-  "latitude": 9.03483,
-  "dosage": "45"
-}{
-  "user_id": 317079275,
-  "drug_name": "This shall work",
-  "Dosage": null,
-  "longitude": 38.876944,
-  "latitude": 9.03483,
-  "dosage": "And it will"
-}{
-  "317079275": {
-    "drug_name": "Drug",
-    "dosage": "New",
-    "longitude": -11.406255,
-    "Latitude": null,
-    "latitude": 20.659324
-  }
-}{
-  "317079275": {
-    "drug_name": "Goody",
-    "dosage": "2shoea",
-    "longitude": null,
-    "Latitude": null
-  }
-}{
-  "317079275": {
-    "drug_name": "Goody",
-    "dosage": "2shoea",
-    "longitude": -11.406255,
-    "Latitude": null,
-    "latitude": 20.659324
-  }
-}{
-  "317079275": {
-    "drug_name": "This could be something",
-    "dosage": "One day hopefully",
-    "longitude": null,
-    "latitude": null
-  }
-}{
-  "317079275": {
-    "drug_name": "This could be something",
-    "dosage": "One day hopefully",
-    "longitude": -11.406255,
-    "latitude": 20.659324
-  }
+{
+    "users": [
+        {
+            "name": null,
+            "something else ": null
+        },
+        {
+            "name": 3,
+            "something else ": 4
+        },
+        {
+            "chat_id": 317079275,
+            "drug_name": "Weed",
+            "dosage": "420 grams",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
+        }
+    ]
 }
