@@ -80,31 +80,6 @@ class methods():
         logger.info('%s entered %s for dosage ', user.first_name, update.message.text)
         update.message.reply_text('Enter the gps location')
         return LOCATION
-
-
-    def typingdescription(update, context):
-        update.message.reply_text("Thank you very much, the info you input will help customers find your pharmacy easily"
-        "\nNow please send your location from within telegram by using the attachment option")
-        methods.x.dict["description"] = update.message.text
-
-        logger.info('user has sent location description')
-
-        return PHARMLOCATION
-    def pharmlocation(update,context):
-        user_location = update.message.location
-        update.message.reply_text('Thankyou for inputting your gps location.'
-        '\nFrom now on you will get updates of requested drugs through this bot')
-        methods.x.dict["location"]["longitude"] = user_location.longitude
-        methods.x.dict["location"]["latitude"] = user_location.latitude
-        update.message.reply_text('you can use /stop command to stop getting updates')
-        logger.info('user has sent gps location')
-        with open('pharmacist.json') as json_file:
-            data = json.load(json_file)
-            temp = data["users"]
-            temp.append(methods.x.dict)
-        write_json(data, filename = 'pharmacist.json')
-        return ConversationHandler.END
-
     def location(update, context):
             bot = context.bot
             keyboard = [
@@ -135,6 +110,7 @@ class methods():
 
 
             return ConversationHandler.END
+
     def pharmacist(update, context):
         #chatId  = update.message.chat.id
         logger.info('user just chose pharmacist')
@@ -146,6 +122,31 @@ class methods():
         methods.acces(pdata)
 
         return PHARMDESCRIPTION
+    def typingdescription(update, context):
+        update.message.reply_text("Thank you very much, the info you input will help customers find your pharmacy easily"
+        "\nNow please send your location from within telegram by using the attachment option")
+        methods.x.dict["description"] = update.message.text
+
+        logger.info('user has sent location description')
+
+        return PHARMLOCATION
+    def pharmlocation(update,context):
+        user_location = update.message.location
+        update.message.reply_text('Thankyou for inputting your gps location.'
+        '\nFrom now on you will get updates of requested drugs through this bot')
+        methods.x.dict["location"]["longitude"] = user_location.longitude
+        methods.x.dict["location"]["latitude"] = user_location.latitude
+        update.message.reply_text('you can use /stop command to stop getting updates')
+        logger.info('user has sent gps location')
+        with open('pharmacist.json') as json_file:
+            data = json.load(json_file)
+            temp = data["users"]
+            temp.append(methods.x.dict)
+        write_json(data, filename = 'pharmacist.json')
+        return ConversationHandler.END
+
+
+
 
 
     def cancel(update, context):
