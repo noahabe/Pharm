@@ -47,7 +47,7 @@ class methods():
              InlineKeyboardButton("Customer", callback_data= 'gaga')]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
-        update.message.reply_text('gagagugu', reply_markup = reply_markup)
+        update.message.reply_text('Choose How You want to interact with the bot', reply_markup = reply_markup)
         return FIRST
     def acces(self, thing):
         self.x = thing
@@ -105,7 +105,7 @@ class methods():
             f = open('pharmacist.json', "r")
             pdata = json.load(f)
             for i in pdata["users"]:
-                bot.send_message(chat_id = i["chat_id"], text = "requested drug is" + methods.x.dict["drug_name"] , reply_markup = reply_markup )
+                bot.send_message(chat_id = i["chat_id"], text = "Requested drug: " + methods.x.dict["drug_name"] + '\nDosage: '+ methods.x.dict["dosage"] ,reply_markup = reply_markup )
 
 
 
