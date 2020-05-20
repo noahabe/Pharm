@@ -1,3 +1,4 @@
+from jsondb import Database
 import logging
 import json
 
@@ -52,6 +53,15 @@ class methods():
     def acces(self, thing):
         self.x = thing
         return self.x
+    def check(self, drugname):
+        self.thing = drugname
+        db = Database('druglist.json')
+        for drug in db["Sheet1"]:
+            if drug["Descriptions of Medicnes "] == self.thing:
+                x = drug["strength"]
+                if x != None:
+                    return True
+
     def entry(update, context):
         logger.info('user has chosen customer ')
         query = update.callback_query
@@ -66,17 +76,19 @@ class methods():
         return ENTRY1
     def entry1(update, context):
         user = update.message.from_user
+        text = update.message.text
+        if methods.check(text) == True:
+            methods.x.dict["drug_name"] = update.message.text
+            logger.info('%s entered %s for drug_name ', user.first_name, update.message.text)
+            update.message.reply_text('please send the DOSAGE for the prescribed medicine')
+            return ENTRY2
+        else:
+            update.message.reply_text('please recheck and re enter the name of the drug')
+            return ENTRY1
 
-        methods.x.dict["drug_name"] = update.message.text
-
-        logger.info('%s entered %s for drug_name ', user.first_name, update.message.text)
-        update.message.reply_text('please send the DOSAGE for the prescribed medicine')
-
-        return ENTRY2
     def entry2(update, context):
         user = update.message.from_user
         methods.x.dict["dosage"] = update.message.text
-
         logger.info('%s entered %s for dosage ', user.first_name, update.message.text)
         update.message.reply_text('Enter the gps location')
         return LOCATION
@@ -172,8 +184,10 @@ conv_handler = ConversationHandler(
         PHARMDESCRIPTION : [MessageHandler(Filters.all, methods.typingdescription)],
         PHARMLOCATION : [MessageHandler(Filters.location, methods.pharmlocation)]},
     fallbacks = [CommandHandler('cancel', methods.cancel)])
+
 methods = methods()
 dp.add_handler(conv_handler)
+#dp.add_handler(commhandler)
 dp.add_error_handler(error)
 updater.start_polling()
 updater.idle()
