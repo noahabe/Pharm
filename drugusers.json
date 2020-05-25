@@ -16,6 +16,69 @@
                 "longitude": -11.406255,
                 "latitude": 20.659324
             }
+        },
+        {
+            "chat_id": 317079275,
+            "drug_name": "Abacavir",
+            "dosage": "60 mg",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
+        },
+        {
+            "chat_id": 317079275,
+            "drug_name": "Capecitabine",
+            "dosage": "400 mg",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
+        },
+        {
+            "chat_id": 317079275,
+            "drug_name": "Abacavir",
+            "dosage": "200 mg",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
+        },
+        {
+            "chat_id": 317079275,
+            "drug_name": "Abacavir",
+            "dosage": "300 mg",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
+        },
+        {
+            "chat_id": 317079275,
+            "drug_name": "Abacavir",
+            "dosage": "300 mg",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
+        },
+        {
+            "chat_id": 317079275,
+            "drug_name": "Abacavir",
+            "dosage": "300 mg",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
+        },
+        {
+            "chat_id": 317079275,
+            "drug_name": "Abacavir",
+            "dosage": "450 mg",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
         }
     ]
 }
