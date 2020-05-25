@@ -1,5 +1,12 @@
 {
-  "users" : [
-
-  ]
+    "users": [
+        {
+            "chat_id": 317079275,
+            "description": "Tafo tafo",
+            "location": {
+                "longitude": -11.406255,
+                "latitude": 20.659324
+            }
+        }
+    ]
 }
