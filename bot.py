@@ -1,5 +1,5 @@
 import os
-from jsondb import Database
+
 import logging
 import json
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
@@ -53,20 +53,25 @@ class methods():
     def acces(self, thing):
         self.x = thing
         return self.x
-    def check(self, drugname):
-        self.thing = drugname
-        db = Database('druglist.json')
-        for drug in db["Sheet1"]:
-            if drug["Descriptions of Medicnes "] == self.thing:
-                x = drug["strength"]
+    def  check(self, drugname):
+        f = open('druglist.json',"r")
+        pdata = json.load(f)
+        for i in pdata["Sheet1"]:
+            if i["Descriptions of Medicnes "] == drugname:
+                x = i["strength"]
                 if x != None:
                     return True
+
     def vendorlocation(self, chatId):
-        db = Database('pharmacist.json')
-        for i in db["users"]:
+        f = open('pharmacist.json',"r")
+        pdata = json.load(f)
+        for i in pdata["users"]:
             if i["chat_id"] == chatId:
                 x = i["description"]
-        return x
+            return x
+
+
+
 
 
     def entry(update, context):
