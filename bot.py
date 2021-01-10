@@ -8,7 +8,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackQueryH
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 PORT = int(os.environ.get('PORT', 5000))
-TOKEN = '1135978630:AAFTaXp1A33RrCxkfOpBsixZ7LxPp8FxYb4'
+TOKEN = "TOKEN"
 logger = logging.getLogger(__name__)
 
 FIRST, SECOND, PHARMDESCRIPTION, PHARMLOCATION, ENTRY1, ENTRY2, LOCATION = range(7)
@@ -200,7 +200,7 @@ def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 def main():
-    updater = Updater("1135978630:AAFTaXp1A33RrCxkfOpBsixZ7LxPp8FxYb4", use_context=True)
+    updater = Updater("TOKEN", use_context=True)
     dp = updater.dispatcher
 #dp.add_handler(CommandHandler('re-enter', methods.entry))
     conv_handler = ConversationHandler(
